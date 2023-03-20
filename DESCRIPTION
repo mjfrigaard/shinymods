@@ -1,0 +1,26 @@
+Package: shinymods
+Title: A collection of shiny tools & modules
+Version: 0.1.1.2
+Authors@R: person('Martin', 'Frigaard', email = 'mjfrigaard@pm.me', role = c('cre', 'aut'))
+Description: The shinymods package contains a collection of functions and tools
+      for creating shiny app modules. These cover thing like importing/uploading
+      data, communicating between modules, etc.
+Maintainer: Martin Frigaard <mjfrigaard@pm.me>
+Encoding: UTF-8
+LazyData: true
+License: MIT + file LICENSE
+Imports: 
+    shiny (>= 1.7.2),
+    config (>= 0.3.1),
+    devtools,
+    rstudioapi,
+    glue
+Suggests:
+    testthat (>= 3.0.0)
+Depends: 
+    R (>= 2.10)
+RoxygenNote: 7.2.3
+Config/testthat/edition: 3
+Language: en-US
+URL: https://mjfrigaard.github.io/shinymods/
+VignetteBuilder: knitr
