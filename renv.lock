@@ -856,13 +856,16 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.17.2",
+      "Version": "0.17.2-6",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "https://rstudio.r-universe.dev",
+      "RemoteUrl": "https://github.com/rstudio/renv",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "799ca60ee56e8013c765eaf1a7df7820e3661447",
       "Requirements": [
         "utils"
       ],
-      "Hash": "aaf3c7f769695266a2113db67a25148b"
+      "Hash": "3886c2bf637f987b99c8b43d16403e30"
     },
     "rlang": {
       "Package": "rlang",
