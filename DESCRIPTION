@@ -14,11 +14,20 @@ Imports:
     config (>= 0.3.1),
     devtools,
     rstudioapi,
-    glue
+    glue,
+    vroom,
+    haven,
+    tools,
+    tibble,
+    readxl
 Suggests:
-    testthat (>= 3.0.0)
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    pkgdown
 Depends: 
     R (>= 2.10)
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Config/testthat/edition: 3
 Language: en-US

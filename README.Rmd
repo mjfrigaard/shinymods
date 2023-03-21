@@ -9,11 +9,12 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  eval = FALSE
 )
 ```
 
-## What's in `shinymods`?
+# What's in `shinymods`?
 
 `shinymods` contains a collection of modules (and helper functions) designed to make creating, using, and testing modules easier. I've intentionally kept all the modules minimal, without complex layout functions or additional dependencies, so their behaviors are more [predictable](https://www.wikiwand.com/en/Principle_of_least_astonishment).
 
@@ -26,3 +27,74 @@ install.packages("remotes")
 remotes::install_github("mjfrigaard/shinymods")
 library(shinymods)
 ```
+
+## Module functions
+
+1. **`prnt_reactvals(name = , id = , mod = )`**: creates UI and server code for the reactive values. The UI displays the reactive inputs in a `verbatimTextOutput()` and renders them in the server via `reactiveValuesToList()`
+    -   if `mod = TRUE`, then `prnt_reactvals()` returns a module with the UI and server code 
+  
+    ```{r prnt_reactvals-mod}
+    prnt_reactvals(name = "vals", id = "dev", mod = TRUE)
+      # put in UI ----
+    mod_vals_ui <- function(id) {
+      ns <- shiny::NS(id)
+      shiny::tagList(
+      # << include additional input IDs >>
+        shiny::icon('user-astronaut'),
+          shiny::verbatimTextOutput(
+            outputId = ns('dev')
+        )
+    )
+    }
+      # put in server ----
+    mod_vals_server <- function(id) {
+    
+      shiny::moduleServer(id, function(input, output, session) {
+          ns <- session$ns
+    
+          output$dev <- shiny::renderPrint({
+            vals <- shiny::reactiveValuesToList(
+              x = input, all.names = TRUE
+            )
+            print(vals)
+        })
+      })
+    }
+    ```
+
+    -   if `mod = FALSE` , then `prnt_reactvals()` returns the UI and server code in a `shiny::tagList()` (*without `shiny::NS()` and `shiny::moduleServer()`*)
+  
+    ```{r}
+    prnt_reactvals(name = "vals", id = "dev", mod = FALSE)
+    # put in UI ----
+      shiny::tagList(
+        shiny::tags$code('vals'),
+          shiny::icon('user-astronaut'),
+            shiny::verbatimTextOutput(
+              outputId = 'dev'
+            )
+      )
+    
+    # put in server ----
+      output$dev <- shiny::renderPrint({
+        vals <- shiny::reactiveValuesToList(
+          x = input, all.names = TRUE
+        )
+        print(vals)
+      })
+    ```
+  
+To view how these modules work, run `reactValsDemo()`
+
+```{r reactValsDemo, echo=FALSE, eval=TRUE, out.width='100%', fig.align='center'}
+knitr::include_graphics(path = "man/figures/reactValsDemo.png")
+```
+
+
+2. **`get_flat_data(name, id, mod = TRUE, return_data = TRUE)`**
+
+3. `get_xlsx_data(name, id, mod = TRUE)`
+
+4. `disp_reactable_table(name, id, mod = TRUE)`
+
+5. `disp_dt_table(name, id, mod = TRUE)`
