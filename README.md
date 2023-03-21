@@ -85,10 +85,14 @@ To view how these modules work, run `reactValsDemo()`
 
 <img src="man/figures/reactValsDemo.png" width="100%" style="display: block; margin: auto;" />
 
-2.  **`get_flat_data(name, id, mod = TRUE, return_data = TRUE)`**
+2.  **`get_flat_data(name, id, mod = TRUE, return_data = TRUE)`**:
+    imports external data files into a shiny application.
 
-3.  `get_xlsx_data(name, id, mod = TRUE)`
+3.  **`get_xlsx_data(name, id, mod = TRUE)`**: imports external excel
+    files into a shiny application
 
-4.  `disp_reactable_table(name, id, mod = TRUE)`
+4.  **`disp_reactable_table(name, id, mod = TRUE)`**: displays data in a
+    `reactable` table
 
-5.  `disp_dt_table(name, id, mod = TRUE)`
+5.  **`disp_dt_table(name, id, mod = TRUE)`**: displays data is a `DT`
+    table.
